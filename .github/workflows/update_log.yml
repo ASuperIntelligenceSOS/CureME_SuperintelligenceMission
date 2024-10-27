@@ -7,6 +7,8 @@ on:
 jobs:
   update-log:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Donne la permission d'écrire dans le dépôt
     
     steps:
       - name: Checkout repository
@@ -17,8 +19,8 @@ jobs:
       
       - name: Commit changes
         run: |
-          git config --local user.email "gouverne-videur-0j@icloud.com"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "GitHub Action"
           git add update_log.md
-          git commit -m "Automated log update"
+          git commit -m "Automated log update" || echo "No changes to commit"
           git push
