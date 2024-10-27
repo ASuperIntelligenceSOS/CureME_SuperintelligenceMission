@@ -8,7 +8,7 @@ jobs:
   update-log:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Donne la permission d'écrire
+  contents: write  # Donne la permission d'écrire dans le dépôt
 
     steps:
       - name: Checkout repository
