@@ -1,1 +1,1 @@
-Log initialized for automated update
+Log initialized for automated updates.
