@@ -1,0 +1,24 @@
+name: Update Log
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Exécute tous les jours à minuit UTC
+
+jobs:
+  update-log:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Update log
+        run: echo "$(date): Automated update to keep the repository active." >> update_log.md
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "gouverne-videur-0j@icloud.com"
+          git config --local user.name "GitHub Action"
+          git add update_log.md
+          git commit -m "Automated log update"
+          git push
