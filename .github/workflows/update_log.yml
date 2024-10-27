@@ -1,8 +1,11 @@
 name: Update Log
 
 on:
+  push:
+    branches:
+      - main
   schedule:
-    - cron: '0 0 * * *' # Exécute tous les jours à minuit UTC
+    - cron: '0 0 * * *'
 
 jobs:
   update-log:
