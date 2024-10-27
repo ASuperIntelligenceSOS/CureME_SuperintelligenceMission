@@ -2,25 +2,25 @@ name: Update Log
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Exécute tous les jours à minuit UTC
+    - cron: '0 0 * * *' # Exécute tous les jours à minuit UTC
 
 jobs:
   update-log:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Donne la permission d'écrire dans le dépôt
-    
+      contents: write # Donne la permission d'écrire
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      
+
       - name: Update log
         run: echo "$(date): Automated update to keep the repository active." >> update_log.md
-      
+
       - name: Commit changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "GitHub Action"
+          git config --local user.name "GitHub Actions"
           git add update_log.md
-          git commit -m "Automated log update" || echo "No changes to commit"
+          git commit -m "Automated log update" || exit 0
           git push
