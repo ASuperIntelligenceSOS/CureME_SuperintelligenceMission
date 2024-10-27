@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Update log
-        run: echo "$(date): Automated update to keep the repository active." >> update_log.md
+        run: "echo \"$(date): Automated update to keep the repository active.\" >> update_log.md"
 
       - name: Commit changes
         run: |
